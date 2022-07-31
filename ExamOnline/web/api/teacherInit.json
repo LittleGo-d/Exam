@@ -1,0 +1,33 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "../welcome.jsp"
+  },
+  "logoInfo": {
+    "title": "TEACHER INDEX",
+    "image": "../../images/logo2.jpg",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "教师管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "所有考试",
+          "href": "../examList.jsp",
+          "icon": "fa fa-home",
+          "target": "_self"
+        },
+        {
+          "title": "出卷",
+          "href": "addExam.jsp",
+          "icon": "fa fa-home",
+          "target": "_self"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "../welcome.jsp"
+  },
+  "logoInfo": {
+    "title": "EXAM ONLINE",
+    "image": "../../images/logo2.jpg",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "管理员",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "题库",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "选择题题库",
+              "href": "multiQuestionList.jsp",
+              "icon": "layui-icon layui-icon-user",
+              "target": "_self"
+            },
+            {
+              "title": "判断题题库",
+              "href": "judgeQuestionList.jsp",
+              "icon": "layui-icon layui-icon-user",
+              "target": "_self"
+            },
+            {
+              "title": "填空题题库",
+              "href": "fillQuestionList.jsp",
+              "icon": "layui-icon layui-icon-user",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "用户",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "教师列表",
+              "href": "../teacherList.jsp",
+              "icon": "layui-icon layui-icon-user",
+              "target": "_self"
+            },
+            {
+              "title": "学生列表",
+              "href": "../studentList.jsp",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "考试",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "所有考试",
+              "href": "../examList.jsp",
+              "icon": "layui-icon layui-icon-user",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

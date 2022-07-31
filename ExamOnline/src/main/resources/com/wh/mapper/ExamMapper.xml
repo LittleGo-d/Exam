@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wh.mapper.ExamMapper">
+    <resultMap id="examMap" type="com.wh.bean.Exam">
+        <id column="examId" property="examId"/>
+        <result column="description" property="description"/>
+        <result column="course" property="course"/>
+        <result column="paperId" property="paperId"/>
+        <result column="examDate" property="examDate"/>
+        <result column="totalTime" property="totalTime"/>
+        <result column="grade" property="grade"/>
+        <result column="term" property="term"/>
+        <result column="major" property="major"/>
+        <result column="totalScore" property="totalScore"/>
+    </resultMap>
+    <select id="getExamList" resultMap="examMap">
+        select * from exam_manage
+        <where>
+            <if test="course != null">
+                course like '%' #{course} '%'
+            </if>
+            <if test="major != null">
+                and major like '%' #{major} '%'
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="countExam" parameterType="com.wh.vo.ExamQuery" resultType="java.lang.Integer">
+        select count(*) from exam_manage
+        <where>
+            <if test="course != null">
+                course like '%' #{course} '%'
+            </if>
+            <if test="major != null">
+                and major like '%' #{major} '%'
+            </if>
+        </where>
+    </select>
+</mapper>

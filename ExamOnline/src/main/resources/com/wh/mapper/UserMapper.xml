@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wh.mapper.UserMapper">
+    <resultMap id="userMap" type="com.wh.bean.User">
+        <id column="user_id" property="userId"/>
+        <result column="user_name" property="userName"/>
+        <result column="sex" property="sex"/>
+        <result column="profession" property="profession"/>
+        <result column="password" property="password"/>
+        <result column="identity" property="identity"/>
+        <result column="flag" property="flag"/>
+    </resultMap>
+    <delete id="deleteByIds">
+        delete from user where user_id in
+        <foreach collection="userIds" item="userId" separator="," open="(" close=")">
+            #{userId}
+        </foreach>
+    </delete>
+    <select id="login" parameterType="com.wh.bean.User" resultMap="userMap">
+        select * from user
+        <where>
+            <if test="userId != null">
+                user_id = #{userId}
+            </if>
+            <if test="password != null">
+                and password = #{password}
+            </if>
+        </where>
+    </select>
+    <select id="getUserList" resultMap="userMap">
+        select * from user
+        <where>
+            <if test="userName != null">
+                user_name like '%' #{userName} '%'
+            </if>
+            <if test="profession != null">
+                and profession like '%' #{profession} '%'
+            </if>
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="countUser" parameterType="com.wh.vo.UserQuery" resultType="java.lang.Integer">
+        select count(*) from user
+        <where>
+            <if test="userName != null">
+                user_name like '%' #{userName} '%'
+            </if>
+            <if test="profession != null">
+                and profession like '%' #{profession} '%'
+            </if>
+        </where>
+    </select>
+    <select id="getTeacherList" resultMap="userMap">
+        select * from user
+        <where>
+            <if test="userName != null">
+                user_name like '%' #{userName} '%'
+            </if>
+            and flag = 2
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="countTeacher" parameterType="com.wh.vo.UserQuery" resultType="java.lang.Integer">
+        select count(*) from user
+        <where>
+            <if test="userName != null">
+                user_name like '%' #{userName} '%'
+            </if>
+            and flag = 2
+        </where>
+    </select>
+    <select id="getStudentList" resultMap="userMap">
+        select * from user
+        <where>
+            <if test="userName != null">
+                user_name like '%' #{userName} '%'
+            </if>
+            and flag = 3
+        </where>
+        limit #{start},#{limit}
+    </select>
+    <select id="countStudent" parameterType="com.wh.vo.UserQuery" resultType="java.lang.Integer">
+        select count(*) from user
+        <where>
+            <if test="userName != null">
+                user_name like '%' #{userName} '%'
+            </if>
+            and flag = 3
+        </where>
+    </select>
+</mapper>
